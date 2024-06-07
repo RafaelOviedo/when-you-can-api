@@ -10,18 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_12_225010) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_07_172944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.json "members", default: []
+    t.date "start_date_bucket_match"
+    t.date "end_date_bucket_match"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
+    t.date "start_date_bucket"
+    t.date "end_date_bucket"
     t.string "email", null: false
     t.string "password_digest"
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

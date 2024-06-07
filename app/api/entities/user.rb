@@ -3,6 +3,7 @@
 module Entities
   class User < Grape::Entity
     expose :id, documentation: { type: 'Integer', desc: 'ID attribute of the User' }
+    expose :group_id, documentation: { type: 'Integer', desc: 'ID attribute of the Group this User belongs to' }
     expose :first_name, documentation: { type: 'String', desc: 'First name attribute of the User' }
     expose :last_name, documentation: { type: 'String', desc: 'Last name attribute of the User' }
     expose :email, documentation: { type: 'String', desc: 'Email attribute of the User' }

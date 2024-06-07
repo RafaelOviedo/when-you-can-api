@@ -10,5 +10,6 @@ module Web
 
     mount(AuthAPI)
     mount(Web::UsersAPI)
+    mount(Web::GroupsAPI)
   end
 end

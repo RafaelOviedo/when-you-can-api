@@ -29,6 +29,7 @@ module Web
       params do
         requires :first_name, type: String
         requires :last_name, type: String
+        requires :group_id, type: Integer
         requires :email, type: String
         requires :password, type: String
         requires :password_confirmation, type: String
@@ -66,7 +67,24 @@ module Web
         end
         patch do
           user = User.find(params[:id])
-          user.update(declared(params, include_missing: false))
+          update_params = declared(params, include_missing: false)
+
+          if user.update(update_params)
+            present user, with: Entities::User
+            byebug
+          else
+            error!({ error: user.errors.full_messages }, 422)
+          end
+        end
+
+        desc 'Deletes a User' do
+          success [{ model: Entities::User, code: 200 }]
+        end
+        params do
+        end
+        delete do
+          user = User.find(params[:id])
+          user.delete
           present user, with: Entities::User
         end
       end
