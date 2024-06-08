@@ -39,7 +39,7 @@ module Web
         end
         get do
           group = Group.find(params[:id])
-          present group, with: Entities::User
+          present group, with: Entities::Group
         end
 
         desc 'Updates an Group' do
