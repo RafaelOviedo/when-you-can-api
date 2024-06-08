@@ -17,15 +17,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_172944) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.json "members", default: []
-    t.date "start_date_bucket_match"
-    t.date "end_date_bucket_match"
+    t.json "dates_bucket_match", default: []
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.date "start_date_bucket"
-    t.date "end_date_bucket"
+    t.json "dates_bucket", default: []
     t.string "email", null: false
     t.string "password_digest"
     t.datetime "created_at", null: false

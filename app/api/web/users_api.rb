@@ -58,6 +58,7 @@ module Web
           optional :first_name, type: String
           optional :last_name, type: String
           optional :email, type: String
+          optional :dates_bucket, type: Array
           optional :password, type: String
           optional :password_confirmation, type: String
           optional :admin, type: Boolean
@@ -68,7 +69,6 @@ module Web
 
           if user.update(update_params)
             present user, with: Entities::User
-            byebug
           else
             error!({ error: user.errors.full_messages }, 422)
           end
