@@ -1,13 +1,10 @@
 class CreateUsers < ActiveRecord::Migration[7.1]
   def change
     create_table :users do |t|
-      t.string :first_name, null: false
-      t.string :last_name, null: false
       t.date :start_date_bucket
       t.date :end_date_bucket
       t.string :email, null: false
       t.string :password_digest
-      t.boolean :admin
       t.timestamps
     end
     add_index :users, :email, unique: true

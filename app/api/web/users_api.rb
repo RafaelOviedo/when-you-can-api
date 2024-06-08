@@ -27,13 +27,10 @@ module Web
         success [{ model: Entities::User, code: 201 }]
       end
       params do
-        requires :first_name, type: String
-        requires :last_name, type: String
         requires :group_id, type: Integer
         requires :email, type: String
         requires :password, type: String
         requires :password_confirmation, type: String
-        optional :admin, type: Boolean
       end
       post do
         user = User.new(declared(params))
