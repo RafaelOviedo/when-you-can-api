@@ -83,5 +83,5 @@ test:
 production:
   <<: *default
   database: when_you_can_api_production
-  username: when_you_can_api
-  password: <%= ENV["WHEN_YOU_CAN_API_DATABASE_PASSWORD"] %>
+  username: <%= ENV["PROD_DATABASE_USERNAME"] %>
+  password: <%= ENV["PROD_DATABASE_PASSWORD"] %>

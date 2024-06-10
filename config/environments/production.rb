@@ -17,10 +17,11 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
   # config.public_file_server.enabled = false
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -65,6 +66,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "the_fetching_game_api_production"
 
   config.action_mailer.perform_caching = false
+  config.action_controller.perform_caching = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -76,6 +78,7 @@ Rails.application.configure do
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
+  config.active_support.deprecation = :notify
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
@@ -87,4 +90,9 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.cache_classes = true
+  config.assets.js_compressor = :uglifier
+  config.assets.compile = false
+  config.log_formatter = ::Logger::Formatter.new
 end
