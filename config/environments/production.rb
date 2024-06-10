@@ -92,7 +92,6 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
   config.cache_classes = true
-  config.assets.js_compressor = :uglifier
   config.assets.compile = false
   config.log_formatter = ::Logger::Formatter.new
 end
